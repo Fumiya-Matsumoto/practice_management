@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_23_174637) do
+ActiveRecord::Schema.define(version: 2022_02_24_140242) do
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 2022_02_23_174637) do
     t.integer "pace_second"
     t.integer "pace_undersecond"
     t.integer "distance_m"
+    t.integer "time_hour_interval"
+    t.integer "time_minute_interval"
+    t.integer "time_second_interval"
   end
 
   create_table "users", force: :cascade do |t|

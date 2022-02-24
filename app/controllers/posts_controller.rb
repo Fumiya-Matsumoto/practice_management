@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     @post.practice_day_of_week = days[@post.practice_day.wday]
     if post_params[:kind_of_practice] != "レスト"
       total_seconds = 3600 * @post.time_hour + 60 * @post.time_minute + @post.time_second
-      pace = (total_seconds / @post.distance_m) * 1000
+      pace = (total_seconds / @post.distance)
       pace_minute = pace.div(60)
       pace_second = pace % 60
       pace_undersecond = pace - pace.to_i
