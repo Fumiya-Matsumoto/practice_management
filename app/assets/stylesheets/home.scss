@@ -1,0 +1,230 @@
+/* reset ================================ */
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font: 100%/1.5 'Avenir Next', 'Hiragino Sans', sans-serif;
+    line-height: 1.7;
+    letter-spacing: 1px;
+  }
+  
+  ul, li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #2d3133;
+    font-size: 14px;
+  }
+  
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+  
+  form input[type="submit"] {
+    border: none;
+    cursor: pointer;
+  }
+  
+//   /* 共通レイアウト ================================ */
+  body {
+    color: #2d3133;
+    margin: 0;
+    padding: 0;
+    min-height: 1vh;
+    display: flex;
+    position: absolute;
+    width: 100%;
+
+  }
+
+  .main {
+    width: 100%;
+    // flex: 1;
+    height: auto;
+    min-height: 100%;
+    // background-color: #f5f8fa;
+  }
+  
+  .container {
+    // max-width: 600px;
+    // margin: 0px 215px 45px 45px;
+    padding: 30px;
+    clear: both;
+    background-color: white;
+    border-radius: 16px;
+  }
+
+// メインコンテンツ
+#main_contents {
+    // background-color: #ffffff;
+    width: 100%;
+    position: relative;
+    margin-top: 72px;
+}
+
+.main-box {
+    width: 100%;
+    margin-left: 170px;
+    padding-right: 170px;
+
+}
+  
+//   /* ヘッダー ================================ */
+  header {
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    margin-bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    height: 72px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    img {
+      height: 50px;
+    }
+  }
+  
+  .header-logo {
+    float: left;
+    padding-left: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-logo a{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header-menus {
+    float: right;
+    padding-right: 20px;
+  }
+  
+  .header-menus li {
+    float: left;
+    line-height: 72px;
+    font-size: 13px;
+    color: #545454;
+    padding-left: 15px;
+  }
+  
+  .header-menus a {
+    float: left;
+    font-size: 13px;
+    color: #545454;
+  }
+  
+  .header-menus .fa {
+    padding-right: 5px;
+  }
+  
+  .header-menus input[type="submit"] {
+    padding: 0 20px;
+    float: left;
+    line-height: 72px;
+    color: white;
+    margin: 0;
+    font-size: 13px;
+  }
+
+
+//   サイドバー
+nav {
+	background-color: rgba(0, 0, 0, 0.04);
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 72px;
+	width: 170px;
+    padding-top: 10px;
+    z-index: 100;
+    padding-left: 10px;
+}
+
+nav h2{
+    background-position: 20px center;
+	background-size: 14px 27px;
+	background-repeat: no-repeat;
+	color: #ffffff;
+	font-size:18px;
+	font-weight: bold;
+	line-height: 60px;
+	padding: 5px 0 0;
+	text-align: center;
+	cursor: pointer;
+    transition-property:all;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+	transition-delay: 0.2s;
+
+	-moz-transition-property:all;
+	-moz-transition-duration: 0.2s;
+	-moz-transition-timing-function: ease;
+	-moz-transition-delay: 0.2s;
+
+	-webkit-transition-property:all;
+	-webkit-transition-duration: 0.2s;
+	-webkit-transition-timing-function: ease;
+	-webkit-transition-delay: 0.2s;
+
+	-o-transition-property:all;
+	-o-transition-duration: 0.2s;
+	-o-transition-timing-function: ease;
+	-o-transition-delay: 0.2s;
+}
+
+nav ul li{
+	cursor: pointer;
+	position: relative;
+}
+
+nav ul li a{
+    display: block;
+    padding: calc(0.5em);
+    color: rgb(71, 71, 71);
+}
+nav ul li.hover,
+nav ul li.more.hover,
+nav ul li.more:hover {
+	background-color: rgba(51, 51, 51, 0.8);
+}
+
+nav ul li.selected,
+nav ul li.selected a,
+nav ul li:hover,
+nav ul li:hover a,
+div.event_search_navi ul li.selected,
+div.event_search_navi ul li:hover {
+	// color: #1abc9c;
+	text-decoration: none;
+}
+
+nav span {
+    color: rgb(71, 71, 71);
+    width: 100%;
+    font-size: 14px;
+    line-height: 22px;
+    margin-left: 8px;
+}
+
+nav ul li.more {
+	background-repeat: no-repeat;
+	background-position: 150px center;
+	background-size: auto 13px;
+	position: relative;
+	display: block;
+}
+
+nav img{
+    // filter: invert(88%) sepia(61%) saturate(0%) hue-rotate(229deg) brightness(107%) contrast(101%);
+    width:24px;
+    height:24px;
+    vertical-align: middle;
+}

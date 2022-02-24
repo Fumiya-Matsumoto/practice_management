@@ -1,0 +1,130 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="practice_diary_header">
+      <div class="sd">
+        <% if params[:month].to_i == 1 %>
+          <% month_before = 12 %>
+          <% year_before = params[:year].to_i - 1 %>
+          <%= link_to "/users/#{params[:id]}/#{year_before}/#{month_before}" do %>
+            <i class="sd"><</i>
+          <% end %>
+        <% else %>
+          <%= link_to "/users/#{params[:id]}/#{params[:year]}/#{params[:month].to_i - 1}" do %>
+            <i class="sd"><</i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="practice_day">
+        <%= params[:month] %>月 <%= params[:year] %>年
+      </div>
+      <div class="sd">
+        <% if params[:month].to_i == 12 %>
+          <% month_next = 1 %>
+          <% year_next = params[:year].to_i + 1 %>
+          <%= link_to "/users/#{params[:id]}/#{year_next}/#{month_next}" do %>
+            <i class="sd">></i>
+          <% end %>
+        <% else %>
+          <%= link_to "/users/#{params[:id]}/#{params[:year]}/#{params[:month].to_i + 1}" do %>
+            <i class="sd">></i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="month_objective">
+      <div class="month_objective_title">
+        <p class="month_objective_title_name">今月の目標</p>
+        <input name= "今月の目標" type="text" placeholder="今月のあなたの目標を書いてください" required="required"
+        class="month_objective_title_input">
+        <button class="month_objective_title_button">
+          <p>保存</p>
+        </button>
+      </div>
+      <div class="month_objective_title">
+        <p class="month_objective_title_name">目標を達成<br>するために</p>
+        <div class="for_month_objective_textarea">
+          <textarea name="目標達成のために" required="required"
+          class="for_month_objective_textarea_input"></textarea>
+        </div>
+        <div class="month_objective__todo_button_area">
+          <button class="month_objective_todo_button">
+            <p>保存</p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="calender_header">
+        <div class="calender_header_col_1">
+          <p>日付</p>
+        </div>
+        <div class="calender_header_col_2">
+          <p>内容</p>
+        </div>
+        <div class="calender_header_col_3">
+          <p>距離<br>(日)</p>
+        </div>
+        <div class="calender_header_col_4">
+          <p>月間<br>距離</p>
+        </div>
+      </div>
+      
+      <div class="calender_contents">
+        <% posts = @posts.where(practice_day_month: params[:month], practice_day_year: params[:year]) %>
+        <% start_day = Date.new(params[:year].to_i, params[:month].to_i, 1) %>
+        <% total_distance = 0 %>
+        <% (start_day..start_day.end_of_month).each do |i| %>
+          <% pos = posts.where(practice_day_day: i.day) %>
+          <% distance = 0 %>
+          <div class="calender_content">
+            <div class="calender_header_col_1">
+              <p><%= i.day %>日<br>(<%= @days[i.wday] %>)</p>
+            </div>
+            <div class="calender_content_col_2">
+              <% pos_morning = pos.where(practice_timezone: "朝") %>
+              <% pos_noon = pos.where(practice_timezone: "午前") %>
+              <% pos_afternoon = pos.where(practice_timezone: "午後") %>
+              <% pos_all = [pos_morning, pos_noon, pos_afternoon] %>
+              <% pos_all.each do |pos_each| %>
+                <% pos_each.each do |p| %>
+                  <div class="practice_menu">
+                    <div class="practice_timezone">
+                      <p><%= p.practice_timezone %></p>
+                    </div>
+                    <div class="practice_content">
+                      <p><%= p.kind_of_practice %></p>
+                    </div>
+                    <div class="practice_content">
+                      <p><%= p.distance %>km</p>
+                      <% distance += p.distance.to_i %>
+                    </div>
+                    <div class="practice_content">
+                      <p>
+                        <% if p.time_hour %>
+                          <%= p.time_hour %>時間
+                        <% end %>
+                        <% if p.time_minute %>
+                          <%= p.time_minute %>分
+                        <% end %>
+                        <% if p.time_second %>
+                          <%= p.time_second %>秒
+                        <% end %>
+                      </p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="calender_header_col_3">
+              <p><%= distance %></p>
+              <% total_distance += distance %>
+            </div>
+            <div class="calender_header_col_4">
+              <p><%= total_distance %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

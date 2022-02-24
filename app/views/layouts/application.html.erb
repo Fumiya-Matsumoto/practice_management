@@ -10,6 +10,80 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav id="side_menu">
+        <ul>
+            <li class="selected">
+                <%= link_to "/" do %>
+                  <%= image_tag "/assets/icon_063040_32.png" %>
+                  トップ
+                <% end %>
+            </li>
+            <li class="add_record">
+                <%= link_to "/posts/new" do %>
+                  <%= image_tag "/assets/icon_024510_32.png" %>
+                  日誌をつける
+                <% end %>
+            </li>
+            <li class="record_index">
+              <% if current_user %>
+                <%= link_to "/users/#{current_user.id}" do %>
+                  <%= image_tag "/assets/icon_006270_32.png" %>
+                  練習日誌
+                <% end %>
+              <% else %>
+                <%= link_to "/" do %>
+                  <%= image_tag "/assets/icon_006270_32.png" %>
+                  練習日誌
+                <% end %>
+              <% end %>
+            </li>
+            <li class="team">
+                <%= link_to "/" do %>
+                  <%= image_tag "/assets/icon_068040_32.png" %>
+                  チーム
+                <% end %>
+            </li>
+            <li class="mypage">
+                <%= link_to "/" do %>
+                  <%= image_tag "/assets/icon_055100_32.png" %>
+                  マイページ
+                <% end %>
+            </li>
+        </ul>
+    </nav>
+    <header>
+      <div class="header-logo">
+        <%= link_to "/" do %>
+          <%= image_tag "/assets/logo.png" %>
+        <% end %>
+      </div>
+      <ul class="header-menus">
+        <li>
+          <%= link_to("ランマネとは", "/about") %>
+        </li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("新規登録", "/users/sign_up") %>
+          </li>
+          <li>
+            <%= link_to("ログイン", "/users/sign_in") %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+    <div id="main_contents">
+      <div class="main-box">
+        <% if flash[:notice]%>
+          <div class="flash">
+            <%= flash[:notice]%>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
