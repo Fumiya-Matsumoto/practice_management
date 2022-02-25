@@ -295,14 +295,12 @@
     align-items: center;
     background: rgba(0,0,0,0.0);
     border-bottom: 0px solid #EEEEEE;
-    border-left: 0px solid #EEEEEE;
     border-right: 1px solid #EEEEEE;
     border-top: 0px solid #EEEEEE;
     flex: none;
-    flex-direction: column;
     flex-wrap: nowrap;
     height: 40px;
-    justify-content: center;
+    justify-content: left;
     padding: 0px 20px 0px;
     width: 60%;
     max-width: 60%;
@@ -452,7 +450,7 @@
     justify-content: flex-start;
     margin: 5px 0px 5px 0px;
     padding: 10px 10px 10px 10px;
-    width: 90%;
+    width: 80%;
     max-width: 90%;
     display: flex;
 }
@@ -636,9 +634,20 @@
                 }
                 .thoughts {
                     border-top: #BFBFBF solid 1px;
+                    border-bottom: #BFBFBF solid 1px;
                     padding: 10px;
                     font-size: 12px;
                     min-height: 170px
+                }
+                .buttons {
+                    display: flex;
+                    justify-content: flex-end;
+                    padding-right: 5px;
+                    a {
+                        margin: 5px;
+                        text-decoration: underline;
+                        text-decoration-color: #BFBFBF;
+                    }
                 }
             }
         }
