@@ -11,6 +11,15 @@ class PostsController < ApplicationController
     @post = Post.new
   end
   def create
+    if not params[:time_hour]
+      params[:time_hour] = 0
+    end
+    if not params[:time_minute]
+      params[:time_minute] = 0
+    end
+    if not params[:time_second]
+      params[:time_second] = 0
+    end
     params[:practice_day] = params[:post][:practice_day]
     post_params = params.require(:post).permit(:practice_timezone, :weather, :place, :kind_of_practice, :strength, :content, :practice_day, :distance, :time_hour, :time_minute, :time_second, :interval_type)
     if post_params[:kind_of_practice] == "インターバル" or post_params[:kind_of_practice] == "レペティション"
@@ -26,6 +35,9 @@ class PostsController < ApplicationController
     @post.practice_day_day = @post.practice_day.day
     days = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"]
     @post.practice_day_of_week = days[@post.practice_day.wday]
+    @post.time_hour = @post.time_hour.to_i
+    @post.time_minute = @post.time_minute.to_i
+    @post.time_second = @post.time_second.to_i
     if post_params[:kind_of_practice] != "レスト"
       total_seconds = 3600 * @post.time_hour + 60 * @post.time_minute + @post.time_second
       pace = (total_seconds / @post.distance)

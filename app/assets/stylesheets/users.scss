@@ -611,6 +611,9 @@
                     font-weight: 600;
                     .strength-phase {
                         margin-right: 10px;
+                        display: flex;
+                        align-items: center;
+
                     }
                     .strength-value {
                         display: flex;
@@ -635,6 +638,7 @@
                     border-top: #BFBFBF solid 1px;
                     padding: 10px;
                     font-size: 12px;
+                    min-height: 170px
                 }
             }
         }
