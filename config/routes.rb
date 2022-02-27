@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "posts/:id/edit" => "posts#edit"
   post "posts/:id/update" => "posts#update"
   post "posts/:id/destroy" => "posts#destroy"
+  post "posts/:id/destroy_show" => "posts#destroy_show"
+  post "posts/:id/destroy_main" => "posts#destroy_main"
   get "/" => "home#top"
   get "about" => "home#about"
 end

@@ -426,16 +426,22 @@
     align-items: center;
     background: rgba(0,0,0,0.0);
     border-right: 1px solid #EEEEEE;
-    border-left: 1px solid #EEEEEE;
-    flex: none;
-    flex-direction: column;
+    display: flex;
     flex-wrap: nowrap;
     height: auto;
     justify-content: center;
     padding: 5px 0px 5px 0px;
+    margin-left: 10px;
     width: 60%;
     max-width: 60%;
     display: flex;
+    .buttons {
+        margin: auto;
+        a {
+            text-decoration: underline;
+            text-decoration-color: #BFBFBF;
+        }
+    }
 }
 
 .practice_menu {
@@ -450,7 +456,7 @@
     justify-content: flex-start;
     margin: 5px 0px 5px 0px;
     padding: 10px 10px 10px 10px;
-    width: 80%;
+    width: 85%;
     max-width: 90%;
     display: flex;
 }

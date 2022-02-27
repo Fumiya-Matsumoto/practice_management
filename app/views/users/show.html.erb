@@ -112,6 +112,14 @@
                       </p>
                     </div>
                   </div>
+                  <div class="buttons">
+                    <div class="edit_button">
+                      <%= link_to("編集", "/posts/#{p.id}/edit") %>
+                    </div>
+                    <div class="remove_button">
+                      <%= link_to("削除", "/posts/#{p.id}/destroy_show", {method: "post"}) %>
+                    </div>
+                  </div>
                 <% end %>
               <% end %>
             </div>

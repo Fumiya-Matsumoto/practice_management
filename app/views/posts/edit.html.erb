@@ -1,18 +1,159 @@
-<div class="main posts-new">
-  <div class="container">
-    <h1 class="form-heading">編集する</h1>
-    <%= form_tag("/posts/#{@post.id}/update") do %>
-        <div class="form">
-            <div class="form-body">
-                <% @post.errors.full_messages.each do |message| %>
-                    <div class="form-error">
-                    <%= message %>
-                    </div>
-                <% end %>
-                <textarea name="content"><%= @post.content %></textarea>
-                <input type="submit" value="保存">
+<div class="main">
+    <section>
+        <h2>編集する</h2>
+        <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+            <%= message %>
             </div>
+        <% end %>
+        <div class="notebook">
+        <%= form_for @post, url: "/posts/#{@post.id}/update" do |f| %>
+            <!-- <%= f.hidden_field :id, value:@post.id %> -->
+            <div class="notes">
+                <div class="days">
+                    <h3>日付</h3>
+                    <%= raw sprintf(
+                                f.date_select(
+                                    :practice_day,
+                                    use_month_numbers: true,
+                                    default: @post.practice_day,
+                                    date_separator: '%s'
+                                ),
+                                '年 ', '月 '
+                            ) + '日' %>
+                </div>
+                <div class="timezone">
+                    <h3>時間帯</h3>
+                      <%= f.radio_button :practice_timezone, "朝", checked: true %>
+                      <label for="朝">朝</label>
+                      <%= f.radio_button :practice_timezone, "午前" %>
+                      <label for="午前">午前</label>
+                      <%= f.radio_button :practice_timezone, "午後" %>
+                      <label for="午後">午後</label>
+                </div>
+            </div>
+            <div class="notes">
+                <div class="weather">
+                    <h3>天気</h3>
+                    <%= f.radio_button :weather, "晴れ", checked: true %>晴れ
+                    <%= f.radio_button :weather, "曇り" %>曇り
+                    <%= f.radio_button :weather, "雨" %>雨
+                    <%= f.radio_button :weather, "雪" %>雪
+                </div>
+                <div class="place">
+                    <h3>場所</h3>
+                    <%= f.radio_button :place, "ロード", checked: true %>ロード
+                    <%= f.radio_button :place, "トラック" %>トラック
+                    <%= f.radio_button :place, "クロカン" %>クロカン
+                </div>
+            </div>
+            <div class="kind_of_practice">
+                <h3>練習の種類</h3>
+                <%= f.radio_button :kind_of_practice, "ジョグ", checked: true %>ジョグ
+                <%= f.radio_button :kind_of_practice, "ペース走" %>ペース走
+                <%= f.radio_button :kind_of_practice, "ビルドアップ" %>ビルドアップ
+                <%= f.radio_button :kind_of_practice, "距離走" %>距離走
+                <br>
+                <%= f.radio_button :kind_of_practice, "インターバル" %>インターバル
+                <%= f.radio_button :kind_of_practice, "レペティション" %>レペティション
+                <%= f.radio_button :kind_of_practice, "レース" %>レース
+                <%= f.radio_button :kind_of_practice, "レスト" %>レスト
+            </div>
+            <div class="results switchItems">
+                <h3>結果</h3>
+                <div class="result">
+                    <div class="result-header">
+                        <div class="remove">
+                        </div>
+                        <div class="distance">
+                            <p>距離</p>
+                            <p class="distance-text">[km]</p>
+                        </div>
+                        <div class="time-jog switchItems-interval">
+                            <p>タイム</p>
+                            <div class="time-detail">
+                                <div class="hour">時間[h]</div>
+                                <div class="minute">分[m]</div>
+                                <div class="second">秒[sec]</div>
+                            </div>
+                        </div>
+                        <div class="time switchItems-jog">
+                            <p>タイム</p>
+                            <div class="time-detail">
+                                <div class="hour">時間[h]</div>
+                                <div class="minute">分[m]</div>
+                                <div class="second">秒[sec]</div>
+                            </div>
+                        </div>
+                        <div class="type switchItems-jog">
+                            疾走 or<br>リカバリー
+                        </div>
+                    </div>
+                    <div class="result-details clone">
+                        <div class="remove">
+                            <button type="button" class="delete">×</button>
+                        </div>
+                        <div class="distance">
+                            <%= f.number_field :distance %>
+                        </div>
+                        <div class="time-jog switchItems-interval">
+                            <div class="time-detail">
+                                <div class="hour">
+                                    <%= f.number_field :time_hour %>
+                                </div>
+                                <div class="minute">
+                                    <%= f.number_field :time_minute %>
+                                </div>
+                                <div class="second">
+                                    <%= f.number_field :time_second %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="time switchItems-jog">
+                            <div class="time-detail">
+                                <div class="hour">
+                                    <%= f.number_field :time_hour_interval %>
+                                </div>
+                                <div class="minute">
+                                    <%= f.number_field :time_minute_interval %>
+                                </div>
+                                <div class="second">
+                                    <%= f.number_field :time_second_interval %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="type switchItems-jog">
+                            <p><%= f.radio_button :interval_type, "疾走" %>疾走</p>
+                            <p><%= f.radio_button :interval_type, "リカバリー" %>リカバリー</p>
+                        </div>
+                    </div>
+                    <div class="cloned"></div>
+                    <div class="under-details">
+                        <button class="plus" type="button">＋</button>
+                    </div>
+                </div>
+            </div>
+            <div class="thoughts">
+                <h3>感想</h3>
+                <div class="strength">
+                    <span>主観的強度</span>
+                    <%= f.radio_button :strength, "1", checked: true %>1
+                    <%= f.radio_button :strength, "2" %>2
+                    <%= f.radio_button :strength, "3" %>3
+                    <%= f.radio_button :strength, "4" %>4
+                    <%= f.radio_button :strength, "5" %>5
+                </div>
+                <div class="content">
+                    <div class="FlexTextarea">
+                        <div class="FlexTextarea__dummy" aria-hidden="true"></div>
+                        <%= f.text_area :content, class: "FlexTextarea__textarea", id: "FlexTextarea" %>
+                    </div>
+                </div>
+            </div>
+            <div class="save-button">
+                <%= f.submit "保存" %>
+            </div>
+        <% end %>
         </div>
-    <% end %>
-  </div>
+    </section>
 </div>
