@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post_id: 1
+  time: 2022-02-27 13:56:06
+  distance_km: 1.5
+  distance_m: 1.5
+  type: 
+  number: 1
+
+two:
+  post_id: 1
+  time: 2022-02-27 13:56:06
+  distance_km: 1.5
+  distance_m: 1.5
+  type: 
+  number: 1
