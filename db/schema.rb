@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_24_140242) do
+ActiveRecord::Schema.define(version: 2022_02_27_073024) do
+
+  create_table "post_records", force: :cascade do |t|
+    t.integer "post_id"
+    t.time "time"
+    t.float "distance"
+    t.float "distance_m"
+    t.string "type"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "time_hour"
+    t.integer "time_minute"
+    t.integer "time_second"
+    t.integer "time_undersecond"
+    t.integer "pace_minute"
+    t.integer "pace_second"
+    t.integer "pace_undersecond"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text "content"

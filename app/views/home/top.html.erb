@@ -1,9 +1,70 @@
-<!-- <div class="main top-main">
-    <div class="top-message">
-        <h2>つぶやきで、世界はつながる</h2>
-        <p>今の気持ちをつぶやいてみよう！</p>
-    </div>
-</div> -->
-<h1>こんにちは</h1>
-<p>jQuery稼働テスト</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PracticeManagement</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-logo">
+        <%= link_to "/" do %>
+          <%= image_tag "/assets/logo.png" %>
+        <% end %>
+      </div>
+      <ul class="header-menus">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "/" do %>
+              <%= image_tag "/assets/user_icon.svg" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("新規登録", "/users/sign_up") %>
+          </li>
+          <li>
+            <%= link_to("ログイン", "/users/sign_in") %>
+          </li>
+        <% end %>
+      </ul>
+    </header>
+    <div class="top">
+        <div class="mainvisual">
+            <img src="/assets/mainvisual.png" alt="">
+            <div class="button">
+                <!-- <a href="">SIGN UP</a> -->
+                <%= link_to("SIGN UP", "/users/sign_up") %>
+            </div>
+        </div>
+        
+        <div class="titles">
+            <div class="subtitle">
+                <p>FOR ALL RUNNERS</p>
+                <div class="line"></div>
+            </div>
+            <div class="title">
+                <h1>RUN MANAGE</h1>
+            </div>
+            <div class="content">
+                <p class="content-1">
+                    長距離選手のための<br>
+                    練習管理サービス
+                </p>
+                <p class="content-2">
+                    自身の調子や成長を確認したり<br>
+                    チームで練習状況を共有する<br>
+                    ことができます。
+                </p>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

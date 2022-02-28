@@ -58,6 +58,7 @@
                 <%= f.radio_button :kind_of_practice, "レース" %>レース
                 <%= f.radio_button :kind_of_practice, "レスト" %>レスト
             </div>
+            <%= f.fields_for :post_records do |r| %>
             <div class="results switchItems">
                 <h3>結果</h3>
                 <div class="result">
@@ -93,18 +94,22 @@
                             <button type="button" class="delete">×</button>
                         </div>
                         <div class="distance">
-                            <%= f.number_field :distance %>
+                            <!-- <%= f.number_field :distance %> -->
+                            <%= r.number_field :distance %>
                         </div>
                         <div class="time-jog switchItems-interval">
                             <div class="time-detail">
                                 <div class="hour">
-                                    <%= f.number_field :time_hour %>
+                                    <!-- <%= f.number_field :time_hour %> -->
+                                    <%= r.number_field :time_hour %>
                                 </div>
                                 <div class="minute">
-                                    <%= f.number_field :time_minute %>
+                                    <!-- <%= f.number_field :time_minute %> -->
+                                    <%= r.number_field :time_minute %>
                                 </div>
                                 <div class="second">
-                                    <%= f.number_field :time_second %>
+                                    <!-- <%= f.number_field :time_second %> -->
+                                    <%= r.number_field :time_second %>
                                 </div>
                             </div>
                         </div>
@@ -129,9 +134,11 @@
                     <div class="cloned"></div>
                     <div class="under-details">
                         <button class="plus" type="button">＋</button>
+                        
                     </div>
                 </div>
             </div>
+            <% end %>
             <div class="thoughts">
                 <h3>感想</h3>
                 <div class="strength">

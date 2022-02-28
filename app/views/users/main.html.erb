@@ -13,16 +13,20 @@
                         <p><%= post.place %>/<%= post.kind_of_practice %></p>
                         <div class="distance-time">
                             <div class="distance">
-                                <span class="figure"><%= post.distance %></span>
+                                <span class="figure">
+                                    <%= post.post_records[0].distance %>
+                                </span>
                                 <span>km</span>
                             </div>
                             <div class="time">
                                 <p>時間</p>
-                                <p class="figure"><%= post.time_hour %>:<%= post.time_minute %>:<%= post.time_second %></p>
+                                <p class="figure">
+                                    <%= post.post_records[0].time_hour %>:<%= post.post_records[0].time_minute %>:<%= post.post_records[0].time_second %>
+                                </p>
                             </div>
                             <div class="pace">
                                 <p>ペース</p>
-                                <p class="figure"><%= post.pace_minute %>:<%= post.pace_second %></p>
+                                <p class="figure"><%= post.post_records[0].pace_minute %>:<%= post.post_records[0].pace_second %></p>
                             </div>
                         </div>
                     </div>

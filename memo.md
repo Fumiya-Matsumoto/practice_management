@@ -40,23 +40,20 @@
 * time_second_interval
 ### PostRecord
 * id
-* post_id
-* time_hour
-* time_minute
-* time_second
-* time_undersecond
-* distance_km
-* distance_m
-* type：疾走かレストか
-* number：〇〇本目
+* post_id:integer
+* time:time
+* distance_km:float
+* distance_m:float
+* type：疾走かレストか:string
+* number：〇〇本目:integer
 * created_at
 * updated_at
 
 ### Objective
 * id
-* user_id
-* month
-* content：目標
-* todo：目標のためにすること
-* created_at
+* user_id:integer
+* month:integer
+* content：string 目標
+* todo：string 目標のためにすること
+* created_at:
 * updated_at

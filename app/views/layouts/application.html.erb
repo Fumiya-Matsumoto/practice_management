@@ -58,10 +58,12 @@
         <% end %>
       </div>
       <ul class="header-menus">
-        <li>
-          <%= link_to("ランマネとは", "/about") %>
-        </li>
         <% if user_signed_in? %>
+          <li>
+            <%= link_to "/" do %>
+              <%= image_tag "/assets/user_icon.svg" %>
+            <% end %>
+          </li>
           <li>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
           </li>

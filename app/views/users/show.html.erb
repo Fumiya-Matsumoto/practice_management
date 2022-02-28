@@ -95,19 +95,19 @@
                       <p><%= p.kind_of_practice %></p>
                     </div>
                     <div class="practice_content">
-                      <p><%= p.distance %>km</p>
-                      <% distance += p.distance.to_i %>
+                      <p><%= p.post_records[0].distance %>km</p>
+                      <% distance += p.post_records[0].distance.to_i %>
                     </div>
                     <div class="practice_content">
                       <p>
-                        <% if p.time_hour %>
-                          <%= p.time_hour %>時間
+                        <% if p.post_records[0].time_hour %>
+                          <%= p.post_records[0].time_hour %>時間
                         <% end %>
-                        <% if p.time_minute %>
-                          <%= p.time_minute %>分
+                        <% if p.post_records[0].time_minute %>
+                          <%= p.post_records[0].time_minute %>分
                         <% end %>
-                        <% if p.time_second %>
-                          <%= p.time_second %>秒
+                        <% if p.post_records[0].time_second %>
+                          <%= p.post_records[0].time_second %>秒
                         <% end %>
                       </p>
                     </div>
